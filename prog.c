@@ -29,10 +29,10 @@ int flag=0;
 for(i=0;codp[i];i++){
 	if((flag=verificaCP(codp[i],c))){
 		printf("%d,%s\n",flag,codp[i]);
-
+		printf("%d\n",i);
 	}
 	printf("%d,%s\n",flag,codp[i]);
-
+	printf("%d",i);
 }
 printf("%d\n",i );
 
