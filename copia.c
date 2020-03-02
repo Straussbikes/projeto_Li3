@@ -4,7 +4,7 @@
 #include <string.h>
 #include "copia.h"
 
-#define MAX_SIZE 1024
+#define MAX_SIZE 100
 int verificaCod(char **c,char *v){
  int i=0;
 
@@ -37,7 +37,7 @@ int i=0;
                                 if(i+1==tam){
                                         c=realloc(c,2*(i+1)*sizeof(char*));     
                                 }
-                                c[i]=malloc(6*sizeof(char));
+                                //c[i]=malloc(6*sizeof(char));
 
                                 c[i]=strdup(strtok(g,"\r\n"));
 }
@@ -52,19 +52,23 @@ int i=0;
 char ** retCP(char **v ){
 
 char **aux=malloc(MAX_SIZE*sizeof(char*));
+
 int i=0;
+
+
 for(i=0;v[i];i++){
   
     if(i+1==MAX_SIZE){
         aux=realloc(aux,2*(i+1)*sizeof(char*));
     }
 
-    char *aux2=malloc(64*sizeof(char));
+    char *aux2=malloc(100*sizeof(char));
    strcpy(aux2,v[i]);
    strtok(aux2," ");
    aux[i]=aux2;
 
 }
+
 
 return aux;
 
@@ -73,17 +77,78 @@ return aux;
 
 int verificaCP(char *cv,char **cp){
     int i;
-    int ret=0;
-
+    
+    int flag=1;
+    char ** aux = cp;
     for(i=0;cp[i];i++){
-            if(strcmp(cp[i],cv)) return ret=1;
+      flag=strcmp(cp[i],cv);
+            if(flag==0) break;
 
     }
-    return ret;
+    cp=aux;
+    return flag;
+}
+
+char ** retCC(char **v ){
+char **aux=NULL;
+
+
+    aux=malloc(MAX_SIZE*sizeof(char*));
+    
+int i=0;
+
+for(i=0;v[i];i++){
+  
+  
+    if(i+1==MAX_SIZE){
+        aux=realloc(aux,2*(i+1)*sizeof(char*));
+    }
+    //aux[i]=malloc(6*sizeof(char));
+
+    aux[i]=strdup(v[i]);
+  
+  aux[i] = strtok (aux[i]," ");
+ 
+  int j=0;
+
+  while (aux[i]!=NULL && j<4)
+  {
+     aux[i] = strtok (NULL, " ");
+    j++;
+  }
+}
+return aux;
 }
 
 
 
+char ** guardaE(char ** v,char **p){
+ char ** res;
+ res=malloc(MAX_SIZE*sizeof(char*));
+
+
+
+int i=0;
+int j=0;
+
+int flag=0;
+ for(i=0;v[i];i++){
+  if(j+1==MAX_SIZE) res=realloc(res,2*(j+1)*sizeof(char*));
+  flag=verificaCP(v[i],p);
+  if(flag!=0){
+    res[j]=strdup(v[i]);
+  j++;
+   printf("%s\n",res[j]);
+}
+
+flag=0;
+}
+
+
+
+
+  return res;
+}
 
 
 

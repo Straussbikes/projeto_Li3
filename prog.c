@@ -17,30 +17,39 @@ char **p;
 char **v;
 	
 	p=cop(fp);
-	v=cop(fv);				
+	if(p==NULL) printf("ficheiro Clientes nao abriu\n");
+	v=cop(fv);
+	if(v==NULL) printf("ficheiro Vendas_1M nao abriu\n");				
 	c=cop(fc);
-	
+	if(c==NULL) printf("ficheiro Produtos nao abriu\n");
+	printf("%s\n",v[0] );
 
-printf("%s\n",v[0]); 
 char **codp=retCP(v);
 
-int i;
-int flag=0;
-for(i=0;codp[i];i++){
-	if((flag=verificaCP(codp[i],c))){
-		printf("%d,%s\n",flag,codp[i]);
-		printf("%d\n",i);
-	}
-	printf("%d,%s\n",flag,codp[i]);
-	printf("%d",i);
-}
-printf("%d\n",i );
+char **codc=retCC(v);
+int bruh=0;
+
+bruh=strcmp(codc[0],c[0]);
 
 
+char  **erroC;
+char **erroP;
+erroC = guardaE(codc,p);
+erroP=guardaE(codp,c);
 
-//free(c);
-//free(p);
-//free(v);
+
+if(erroP==NULL) printf("nenhum codigo de produto errado\n");
+   else free(erroP);
+
+if(erroC==NULL) printf("nenhum codigo de Clientes errado\n");
+   else free(erroC);
+printf("%s\n",erroC[0]);
+  
+free(codc);
+free(codp);
+free(c);
+free(p);
+free(v);
 return 0;
 }
 
