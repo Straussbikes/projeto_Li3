@@ -137,18 +137,26 @@ int flag=0;
   flag=verificaCP(v[i],p);
   if(flag!=0){
     res[j]=strdup(v[i]);
-  j++;
    printf("%s\n",res[j]);
+   j++;
 }
 
 flag=0;
 }
-
-
-
-
   return res;
 }
+
+
+SGV initSGV(){
+struct SGV v;
+
+v.valor=NULL;
+v.next= NULL;
+v.key=NULL;    
+
+
+}
+
 
 
 

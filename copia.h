@@ -1,4 +1,12 @@
 
+typedef struct sGV
+{
+  int key;
+  int *next;
+  char *valor;
+  
+};
+
 int verificaCod(char **c,char *v);
 
 char**  cop(FILE* fp);
