@@ -12,6 +12,10 @@ FILE * fc;
 fp = fopen( "Clientes.txt", "r" );
 fc = fopen("Produtos.txt","r");
 fv = fopen("Vendas_1M.txt","r");
+ClientesA* ca;
+ca=copiaS(fp);
+
+/*
 char **c;
 char **p;
 char **v;
@@ -50,6 +54,7 @@ free(codp);
 free(c);
 free(p);
 free(v);
+*/
 return 0;
 }
 

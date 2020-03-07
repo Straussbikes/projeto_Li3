@@ -147,15 +147,7 @@ flag=0;
 }
 
 
-SGV initSGV(){
-struct SGV v;
 
-v.valor=NULL;
-v.next= NULL;
-v.key=NULL;    
-
-
-}
 
 
 
