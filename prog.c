@@ -12,9 +12,10 @@ FILE * fc;
 fp = fopen( "Clientes.txt", "r" );
 fc = fopen("Produtos.txt","r");
 fv = fopen("Vendas_1M.txt","r");
-ClientesA* ca;
+ClientesA *ca;
 ca=copiaS(fp);
 
+	if(ca==NULL) printf("ficheiro Clientes nao abriu\n");
 /*
 char **c;
 char **p;
@@ -54,7 +55,12 @@ free(codp);
 free(c);
 free(p);
 free(v);
+
 */
+ fclose(fp);
+  fclose(fc);
+   fclose(fv);
+
 return 0;
 }
 

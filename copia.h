@@ -8,14 +8,15 @@ typedef struct Clientes{
 
 typedef struct ClientesA{
    char a;
+   int size;
    Clientes *arr;
    
 
 
 }ClientesA;
+void initC(ClientesA *a);
 
-
-
+char* switchs(char *s);
 
 int verificaCod(char **c,char *v);
 
