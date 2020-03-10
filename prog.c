@@ -13,28 +13,37 @@ fp = fopen( "Clientes.txt", "r" );
 fc = fopen("Produtos.txt","r");
 fv = fopen("Vendas_1M.txt","r");
 ClientesA *ca;
-ca=copiaS(fp);
+Vendas *v;
+char **erro;
 
-	if(ca==NULL) printf("ficheiro Clientes nao abriu\n");
+
+v=copiaV(fv);
+ca=copiaS(fp);
+erro=verificaC(v,ca);
+
+	//if(ca==NULL) printf("ficheiro Clientes nao abriu\n");
 /*
+
 char **c;
 char **p;
 char **v;
 	
-	p=cop(fp);
-	if(p==NULL) printf("ficheiro Clientes nao abriu\n");
+	//p=cop(fp);
+	//if(p==NULL) printf("ficheiro Clientes nao abriu\n");
 	v=cop(fv);
 	if(v==NULL) printf("ficheiro Vendas_1M nao abriu\n");				
-	c=cop(fc);
-	if(c==NULL) printf("ficheiro Produtos nao abriu\n");
-	printf("%s\n",v[0] );
+	//c=cop(fc);
+	//if(c==NULL) printf("ficheiro Produtos nao abriu\n");
+	
 
-char **codp=retCP(v);
+//char **codp=retCP(v);
 
-char **codc=retCC(v);
+//char **codc=retCC(v);
+
+
 int bruh=0;
 
-bruh=strcmp(codc[0],c[0]);
+//bruh=strcmp(codc[0],c[0]);
 
 
 char  **erroC;
@@ -50,13 +59,14 @@ if(erroC==NULL) printf("nenhum codigo de Clientes errado\n");
    else free(erroC);
 printf("%s\n",erroC[0]);
   
-free(codc);
-free(codp);
-free(c);
-free(p);
-free(v);
+//free(codc);
+//free(codp);
 
+//free(c);
+//free(p);
 */
+
+
  fclose(fp);
   fclose(fc);
    fclose(fv);

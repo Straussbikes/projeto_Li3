@@ -37,12 +37,13 @@ int i=0;
                                 if(i+1==tam){
                                         c=realloc(c,2*(i+1)*sizeof(char*));     
                                 }
-                                //c[i]=malloc(6*sizeof(char));
+                                 c[i]=malloc(6*sizeof(char));
 
                                 c[i]=strdup(strtok(g,"\r\n"));
 }
 
          fclose(fp) ;
+free(c);
          return c;
 	  
 
