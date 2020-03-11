@@ -15,11 +15,16 @@ fv = fopen("Vendas_1M.txt","r");
 ClientesA *ca;
 Vendas *v;
 char **erro;
+erro=malloc(1000000*sizeof(char*));
 
 
 v=copiaV(fv);
+//printf("%s",v[0].codC);
+//printf("%s",v[1].codC);
 ca=copiaS(fp);
-erro=verificaC(v,ca);
+for(int j=0;ca[j];j++);
+printf("%d",j);
+//erro=verificaC(v,ca);
 
 	//if(ca==NULL) printf("ficheiro Clientes nao abriu\n");
 /*

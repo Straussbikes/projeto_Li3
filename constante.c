@@ -93,7 +93,8 @@ int guard=0;
 				
                                 ca[aux].arr[guard].key=guard;
                                
-                                ca[aux].arr[guard].value=strdup(strtok(g,"\r\n"));                                
+                                ca[aux].arr[guard].value=strdup(strtok(g,"\r\n"));          
+				//printf("%s\n", ca[aux].arr[guard].value);                      
 }
 free(ca);
 return ca;
@@ -149,21 +150,23 @@ char** verificaC(Vendas *v,ClientesA *c){
 char **ret;
 char **aux=NULL;
 ret=aux;
-char *toint=NULL;
+char toint[64];
 int ind=0;
 int i;
 int j=0;
 int guard=0;
 int flag=0;
+printf("%s",v[0].codC);
+
 	for(i=0;v[i].codC!=NULL;i++){
 
-printf("%s",v[i].codC);
+//printf("%s",v[i].codC);
 		ind=v[i].codC[0]%NUM_ALPHA;
-printf("%d",ind);
+//printf("%d\n",ind);
  		switchs(v[i].codC,toint);
 	        guard=(int)strtol(toint, (char **)NULL, 10);
-        		printf("%d",guard);
-               flag=strcmp(v[i].codC,c[ind].arr[guard].value);
+        		printf("numero:%s    %s\n",v[i].codC,c[ind].arr[guard].value);
+            // flag=strcmp(v[i].codC,c[ind].arr[guard].value);
                    
 
 
