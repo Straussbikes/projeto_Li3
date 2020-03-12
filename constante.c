@@ -76,7 +76,7 @@ int guard=0;
                           
                      	ca[aux].a=g[0];         
  							//printf("indice :%d\n",aux);
- 							//printf("cahr :%c\n",ca[aux].a);
+ 							//printf("char :%c\n",ca[aux].a);
                            /*
                                    if(ca[aux].size+1==MAX_BUFF){
                                         ca[aux].arr=realloc(ca[aux].arr,2*(ca[aux].size+1)*sizeof(Clientes));
@@ -128,7 +128,7 @@ aux=split(g);
      v[i].mes= (int)strtol((aux[6]), (char **)NULL, 10);
      v[i].filial= (int)strtol((aux[7]), (char **)NULL, 10);
 
-//printf("%d\n",v[i].unidades);
+//printf("%s\n",v[i].codC);
 
 
 
@@ -153,36 +153,33 @@ ret=aux;
 char toint[64];
 int ind=0;
 int i;
-int j=0;
+
 int guard=0;
 int flag=0;
-printf("%s",v[0].codC);
+int count=0;
+//printf("%s",v[0].codC);
 
-	for(i=0;v[i].codC!=NULL;i++){
-
+	for(i=0;i<1000000;i++){
+//printf("zat:%d\n",count);
 //printf("%s",v[i].codC);
 		ind=v[i].codC[0]%NUM_ALPHA;
 //printf("%d\n",ind);
+//printf("%c\n",c[i].a);
  		switchs(v[i].codC,toint);
+//printf("%s",toint);
 	        guard=(int)strtol(toint, (char **)NULL, 10);
-        		printf("numero:%s    %s\n",v[i].codC,c[ind].arr[guard].value);
-            // flag=strcmp(v[i].codC,c[ind].arr[guard].value);
+
+        		printf("numero:%s\n",v[i].codC);
+		if(!(c[ind].arr[guard].value==NULL)){
+		//printf("numero:%s    %s\n",v[i].codC,c[ind].arr[guard].value);
+           //  flag=strcmp(v[i].codC,c[ind].arr[guard].value);
+//printf("%d",flag);
+	   //if(flag!=0) aux[j++]=strdup(v[i].codC);
                    
+             }else //printf("numero:%s    \n",v[i].codC);
+count++;
 
-
-
-
-
-if(flag!=0) aux[j++]=strdup(v[i].codC);
-
-
-
-	}
-
-
-
-
-
+}
 return ret;
 }
 
