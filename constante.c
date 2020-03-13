@@ -31,12 +31,16 @@ return aux-1;
 void switchs(char s[],char h[]){
  char *ss=NULL;
 ss=s;
-int i;   
-for(i=0;s[i]!='\0';i++){
-h[i]=s[i+1];
-}
+int i, j; 
 
+for(i=0;s[i];i++){
+h[i]=s[i+1];
+//printf("%c\n",h[j]);
+}
 h[i]='\0';
+//printf("S = %s\n",s );
+//printf("H = %s\n",h);
+//h[i+1]='\0';
 s=ss;
 
 }
@@ -62,7 +66,7 @@ ClientesA* copiaS(FILE* f){
 
 int i=0;
 int count=0;
-char g[6];
+char *g;
 
 int aux=0;
 char aux2[64];
@@ -73,6 +77,7 @@ int guard=0;
   		for(i=0; fgets(g,64,f)!=NULL ;i++){
   			 count++;
                      aux=g[0]%NUM_ALPHA;
+                     //printf("%d\n",aux );
                           
                      	ca[aux].a=g[0];         
  							//printf("indice :%d\n",aux);
@@ -85,15 +90,21 @@ int guard=0;
                                 } 
 
                           	*/
-                               strncpy(aux2, g, 6);
+                     			
+                     			//printf("AUX2 = %s\n", aux2);
+                               strncpy(aux2, g, 5);
                                switchs(g,aux2);
-                              guard=(int)strtol(aux2, (char **)NULL, 10);
+                              	//printf("G = %s\n",g);
+                              	
+                              	guard=(int)strtol(aux2, (char **)NULL, 10);
                               
                                 ca[aux].size++;
 				
                                 ca[aux].arr[guard].key=guard;
                                
-                                ca[aux].arr[guard].value=strdup(strtok(g,"\r\n"));          
+                                ca[aux].arr[guard].value=strdup(strtok(g,"\r\n"));  
+
+                                //memset(aux2, '\0', sizeof aux2);        
 				//printf("%s\n", ca[aux].arr[guard].value);                      
 }
 free(ca);
@@ -138,6 +149,7 @@ aux=split(g);
 count ++;
 
 }
+
 //printf("\n%d\n",count);
 return v;
 
@@ -169,8 +181,9 @@ int count=0;
 //printf("%s",toint);
 	        guard=(int)strtol(toint, (char **)NULL, 10);
 
-        		printf("numero:%s\n",v[i].codC);
+        		printf("numero:%s\n",toint);
 		if(!(c[ind].arr[guard].value==NULL)){
+			printf("o zat?\n");
 		//printf("numero:%s    %s\n",v[i].codC,c[ind].arr[guard].value);
            //  flag=strcmp(v[i].codC,c[ind].arr[guard].value);
 //printf("%d",flag);
@@ -180,6 +193,7 @@ int count=0;
 count++;
 
 }
+
 return ret;
 }
 

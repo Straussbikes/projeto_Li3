@@ -9,24 +9,32 @@ int main(int argc,char *argv[]){
 FILE * fp;
 FILE * fv;
 FILE * fc;
-fp = fopen( "Clientes.txt", "r" );
+fp = fopen("Clientes.txt", "r");
 fc = fopen("Produtos.txt","r");
 fv = fopen("Vendas_1M.txt","r");
-ClientesA *ca;
+ClientesA *ca;	
 Vendas *v;
 char **erro;
 erro=malloc(1000000*sizeof(char*));
 
-
+v=malloc(1000000*sizeof(Vendas));
 v=copiaV(fv);
+//for(int j;v[j].codC!=NULL;j++) printf("%s\n",v[j].codC);
+
+
+//free(v);
 
 //printf("%s",v[0].codC);
 //printf("%s",v[1].codC);
+//printf("merda\n");
+//printf("O ZAT");
+
 ca=copiaS(fp);
 
+//printf("O ZAT");
 
 erro=verificaC(v,ca);	
-
+//free(erro);
 	//if(ca==NULL) printf("ficheiro Clientes nao abriu\n");
 /*
 
