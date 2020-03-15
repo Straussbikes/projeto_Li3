@@ -50,12 +50,9 @@ int i;
 
 for(i=0;s[i];i++){
 h[i]=s[i+1];
-//printf("%c\n",h[j]);
 }
 h[i]='\0';
-//printf("S = %s\n",s );
-//printf("H = %s\n",h);
-//h[i+1]='\0';
+
 s=ss;
 
 }
@@ -85,41 +82,17 @@ char aux2[64];
 initC(ca);
 int guard=0;
   		for(i=0; fgets(g,64,f)!=NULL ;i++){
-  			 count++;
+  		     count++;
                      aux=g[0]%NUM_ALPHA;
-                     //printf("%d\n",aux );
-                          
-                     	ca[aux].a=g[0];         
- 							//printf("indice :%d\n",aux);
- 							//printf("char :%c\n",ca[aux].a);
-                           /*
-                                   if(ca[aux].size+1==MAX_BUFF){
-                                        ca[aux].arr=realloc(ca[aux].arr,2*(ca[aux].size+1)*sizeof(Clientes));
-					ca[aux].size=0;
-                                             
-                                } 
-
-                          	*/
-                     			
-                     			//printf("AUX2 = %s\n", aux2);
-                               strncpy(aux2, g, 5);
-                               switchs(g,aux2);
-                              	//printf("G = %s\n",g);
-                              	
-                              	guard=(int)strtol(aux2, (char **)NULL, 10);
-                              
-                                ca[aux].size++;
-				
-                                ca[aux].arr[guard].key=guard;
-                               
-                                ca[aux].arr[guard].value=strdup(strtok(g,"\r\n"));  
-
-                                //memset(aux2, '\0', sizeof aux2);        
-				//printf("%s\n", ca[aux].arr[guard].value);                      
-}
-
+                     ca[aux].a=g[0];         
+                     strncpy(aux2, g, 5);
+                     switchs(g,aux2);   	
+                     guard=(int)strtol(aux2, (char **)NULL, 10);
+                     ca[aux].size++;
+	             ca[aux].arr[guard].key=guard;
+                     ca[aux].arr[guard].value=strdup(strtok(g,"\r\n"));                                     
+                }
 return ca;
-
 }
 
 Vendas* copiaV(FILE* f,Vendas *v){
