@@ -12,29 +12,38 @@ FILE * fc;
 fp = fopen("Clientes.txt", "r");
 fc = fopen("Produtos.txt","r");
 fv = fopen("Vendas_1M.txt","r");
-ClientesA *ca;	
-Vendas *v;
-char **erro;
-erro=malloc(1000000*sizeof(char*));
 
-v=malloc(MAX_BUFF*sizeof(Vendas));
-v=copiaV(fv,v);
-
-
-
-
-ca=malloc(100*sizeof(ClientesA));
-ca=copiaS(fp,ca);
-
-
-
-erro=verificaC(v,ca,erro);	
+//	switch((int)strtol(argv[1], (char **)NULL, 10))
+//{
+  //case 1:
+	if(fp==NULL) printf("ficheiro Clientes nao abriu\n");
+	if(fc==NULL) printf("ficheiro Clientes nao abriu\n");
+	if(fv==NULL) printf("ficheiro Clientes nao abriu\n");
+	ClientesA *ca;	
+	Vendas *v;
+	char **erro;
+	erro=malloc(1000000*sizeof(char*));
+	v=malloc(MAX_BUFF*sizeof(Vendas));
+	v=copiaV(fv,v);
+	ca=malloc(100*sizeof(ClientesA));
+	ca=copiaS(fp,ca);
+	erro=verificaC(v,ca,erro);
+	Produtos *p;
+	p=malloc(100*sizeof(Produtos));	
+        p=copiaP(fc,p);
+	char **erro2=malloc(1000000*sizeof(char*));
+	erro2=verificaP(v,p,erro2);
 
 for(int j=0;erro[j];j++) printf("nao existe no ficheiro clientess: %s\n",erro[j]);
-	//if(ca==NULL) printf("ficheiro Clientes nao abriu\n");
+for(int i=0;erro2[i];i++) printf("nao existe no ficheiro Produtos: %s\n",erro2[i]);
+free(erro);
+free(ca);
+free(v);	
+free(p);
+free(erro2);
+  //case 2:
 /*
-
-char **c;
+char **c;	
 char **p;
 char **v;
 	
@@ -75,9 +84,9 @@ printf("%s\n",erroC[0]);
 //free(c);
 //free(p);
 */
-free(erro);
-free(ca);
-free(v);
+//default : 
+//	printf("selecione uma opcao correta");
+//}
  fclose(fp);
   fclose(fc);
    fclose(fv);
