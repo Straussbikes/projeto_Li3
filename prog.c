@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include <string.h>
 #include "copia.h"
-
+#define MAX_BUFF 1000000
 
 int main(int argc,char *argv[]){
 FILE * fp;
@@ -17,24 +17,20 @@ Vendas *v;
 char **erro;
 erro=malloc(1000000*sizeof(char*));
 
-v=malloc(1000000*sizeof(Vendas));
-v=copiaV(fv);
-//for(int j;v[j].codC!=NULL;j++) printf("%s\n",v[j].codC);
+v=malloc(MAX_BUFF*sizeof(Vendas));
+v=copiaV(fv,v);
 
 
-//free(v);
 
-//printf("%s",v[0].codC);
-//printf("%s",v[1].codC);
-//printf("merda\n");
-//printf("O ZAT");
 
-ca=copiaS(fp);
+ca=malloc(100*sizeof(ClientesA));
+ca=copiaS(fp,ca);
 
-//printf("O ZAT");
 
-erro=verificaC(v,ca);	
-//free(erro);
+
+erro=verificaC(v,ca,erro);	
+
+for(int j=0;erro[j];j++) printf("nao existe no ficheiro clientess: %s\n",erro[j]);
 	//if(ca==NULL) printf("ficheiro Clientes nao abriu\n");
 /*
 
@@ -79,8 +75,9 @@ printf("%s\n",erroC[0]);
 //free(c);
 //free(p);
 */
-
-
+free(erro);
+free(ca);
+free(v);
  fclose(fp);
   fclose(fc);
    fclose(fv);

@@ -31,7 +31,7 @@ return aux-1;
 void switchs(char s[],char h[]){
  char *ss=NULL;
 ss=s;
-int i, j; 
+int i; 
 
 for(i=0;s[i];i++){
 h[i]=s[i+1];
@@ -60,18 +60,12 @@ void initC(ClientesA *ca){
 
 
 
-ClientesA* copiaS(FILE* f){
-
- 
-
+ClientesA* copiaS(FILE* f,ClientesA *ca){
 int i=0;
 int count=0;
-char *g;
-
+char g[64];
 int aux=0;
 char aux2[64];
-ClientesA *ca;
-ca=malloc(100*sizeof(ClientesA));
 initC(ca);
 int guard=0;
   		for(i=0; fgets(g,64,f)!=NULL ;i++){
@@ -107,19 +101,19 @@ int guard=0;
                                 //memset(aux2, '\0', sizeof aux2);        
 				//printf("%s\n", ca[aux].arr[guard].value);                      
 }
-free(ca);
+
 return ca;
 
 }
 
-Vendas* copiaV(FILE* f){
+Vendas* copiaV(FILE* f,Vendas *v){
 char g[64];
 int count=0;
 char **aux;
 int limit_buff=0;
-Vendas *v;
+
 int i;
-v=malloc(MAX_BUFF*sizeof(Vendas));
+
 
 		for(i=0; fgets(g,64,f)!=NULL ;i++){
                                   if(limit_buff+1==MAX_BUFF){
@@ -150,7 +144,8 @@ count ++;
 
 }
 
-//printf("\n%d\n",count);
+printf("\n%d\n",count);
+
 return v;
 
 
@@ -158,42 +153,20 @@ return v;
 
 
 
-char** verificaC(Vendas *v,ClientesA *c){
-char **ret;
-char **aux=NULL;
-ret=aux;
+char** verificaC(Vendas *v,ClientesA *c,char **e){
 char toint[64];
 int ind=0;
+char **ret=e;
 int i;
-
 int guard=0;
-int flag=0;
-int count=0;
-//printf("%s",v[0].codC);
-
+int j=0;
 	for(i=0;i<1000000;i++){
-//printf("zat:%d\n",count);
-//printf("%s",v[i].codC);
 		ind=v[i].codC[0]%NUM_ALPHA;
-//printf("%d\n",ind);
-//printf("%c\n",c[i].a);
  		switchs(v[i].codC,toint);
-//printf("%s",toint);
 	        guard=(int)strtol(toint, (char **)NULL, 10);
-
-        		printf("numero:%s\n",toint);
-		if(!(c[ind].arr[guard].value==NULL)){
-			printf("o zat?\n");
-		//printf("numero:%s    %s\n",v[i].codC,c[ind].arr[guard].value);
-           //  flag=strcmp(v[i].codC,c[ind].arr[guard].value);
-//printf("%d",flag);
-	   //if(flag!=0) aux[j++]=strdup(v[i].codC);
-                   
-             }else //printf("numero:%s    \n",v[i].codC);
-count++;
-
-}
-
+		if(c[ind].arr[guard].value==NULL) e[j++]=strdup(v[i].codC);
+	   
+        }
 return ret;
 }
 

@@ -26,8 +26,8 @@ typedef struct Vendas{
   int filial;
  }Vendas;
 void initC(ClientesA *a);
-Vendas* copiaV(FILE* f);
-char** verificaC(Vendas *v,ClientesA *c);
+Vendas* copiaV(FILE* f,Vendas *v);
+char** verificaC(Vendas *v,ClientesA *c,char **e);
 void switchs(char s[],char h[]);
 
 int verificaCod(char **c,char *v);
@@ -39,5 +39,5 @@ int verificaCP(char *cv,char **cp);
 
 char ** retCC(char **v);
 char ** guardaE(char ** v,char **p);
-ClientesA* copiaS(FILE* f);
+ClientesA* copiaS(FILE* f,ClientesA *ca);
 char** split(char *p);
