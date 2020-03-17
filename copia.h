@@ -14,6 +14,7 @@ typedef struct ClientesA{
 
 
 }ClientesA;
+
 typedef struct Produtos{
    char a;
    ClientesA *ca;
@@ -31,6 +32,7 @@ typedef struct Vendas{
   int mes;
   int filial;
  }Vendas;
+
 void initC(ClientesA *a);
 void initP(Produtos *p);
 Vendas* copiaV(FILE* f,Vendas *v);
@@ -49,3 +51,5 @@ char ** guardaE(char ** v,char **p);
 ClientesA* copiaS(FILE* f,ClientesA *ca);
 char** split(char *p);
 Produtos* copiaP(FILE* f,Produtos *p);
+
+int consultaProdutos(char c, Produtos *p);

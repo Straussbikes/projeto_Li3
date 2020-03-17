@@ -3,6 +3,7 @@
 #include <ctype.h>
 #include <string.h>
 #include "copia.h"
+
 #define MAX_BUFF 1000000
 
 int main(int argc,char *argv[]){
@@ -34,13 +35,39 @@ fv = fopen("Vendas_1M.txt","r");
 	char **erro2=malloc(1000000*sizeof(char*));
 	erro2=verificaP(v,p,erro2);
 
-for(int j=0;erro[j];j++) printf("nao existe no ficheiro clientess: %s\n",erro[j]);
-for(int i=0;erro2[i];i++) printf("nao existe no ficheiro Produtos: %s\n",erro2[i]);
-free(erro);
-free(ca);
-free(v);	
-free(p);
-free(erro2);
+//for(int j=0;erro[j];j++) printf("nao existe no ficheiro clientess: %s\n",erro[j]);
+//for(int i=0;erro2[i];i++) printf("nao existe no ficheiro Produtos: %s\n",erro2[i]);
+//free(erro);
+//free(ca);
+//free(v);	
+//free(p);
+//free(erro2);
+	printf("Escolha uma opcao:\n");
+	printf("2- Determinar nr total de produtos por letra\n");
+	int z;
+	scanf("%d", &z);
+	//getchar();
+	switch (z){
+    case 2:
+    	printf("Introduza a letra\n");
+    	char c;
+    	scanf(" %c", &c);
+    	//getchar();
+    	//printf("%c\n", c);
+    	consultaProdutos(c,p);
+      
+      break;
+
+    //case constant2:
+      // statements
+      //break;
+    
+    
+    
+    //default:
+      // default statements
+}
+
   //case 2:
 /*
 char **c;	
